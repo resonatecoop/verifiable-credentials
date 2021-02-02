@@ -1,0 +1,6 @@
+[submodule "vc-layer-api"]
+	path = vc-layer-api
+	url = https://gitlab.com/verifiablecredentials.info/vc-layer-api
+[submodule "discourse-verifiable-credentials"]
+	path = discourse-verifiable-credentials
+	url = https://github.com/paviliondev/discourse-verifiable-credentials
