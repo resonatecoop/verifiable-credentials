@@ -24,8 +24,8 @@ app.get('/v1/getAllAttrs/:username', function(request, response) {
         "surname": "McLeod",
         "supporter": {
           "name": "angus mcleod",
-          "artist": "CHVRCHES",
-          "from": "02/02/2021",
+          "artist": "Feral Five",
+          "from": "09/02/2021",
           "level": "gold"
         }
       }]

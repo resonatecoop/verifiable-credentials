@@ -4,12 +4,12 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Hey Angus, confirm your purchase of "Every Open Eye" by CHVRCHES' });
+  res.render('index');
 });
 
 router.post('/purchase', function(req, res) {
   
-  console.dir("Purchase completed by other Resonate systems");
+  console.dir("Purchase completed");
   
   axios.post('http://127.0.0.1:1880/v1/RegisterWithIssuer', {
     vcIssuer: "http://localhost:4000",
@@ -26,7 +26,7 @@ router.post('/purchase', function(req, res) {
     console.error(error)
   });
   
-  res.sendStatus(200);
+  res.redirect('/player');
 });
 
 module.exports = router;

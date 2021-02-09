@@ -47,6 +47,8 @@ npm start
 
 The instructions on how to set this up are in the document "Installing_the_Dummy_Verifiable_Credentials_Layer.docx", see "Installation Instructions". Once you have your dummy wallet in your home directory, the ``node-red`` server running, and the "DummyVCLayer.json" installed leave this server running.
 
+Make sure you run ``node-red`` in the same directory where your ``VCredentials.json`` file is located.
+
 #### VC User API
 
 ```
