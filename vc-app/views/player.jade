@@ -4,4 +4,13 @@ block content
   header(style="position:fixed;top:0;left:0;width:100vw;height:100px;border-bottom:1px solid #333;display:flex;align-items:center;justify-content:space-between;padding:0 2em;box-sizing:border-box;")
     img(src='images/resonate.png', alt='Resonate', style='height:99px;')
     img(src='images/angus.png', alt="Angus", style="border-radius:50%;width:50px;height:50px;")
-  img(src='images/player.png', alt='Player', style='position:fixed;left:0;top:100px;height:calc(100vh - 100px);width:100vw;object-fit:cover;') 
+  h1(style="padding-top:80px;")= 'Purchase Complete'
+  div(style="display: flex;")
+    form(name="purchase", action="/purchase", method='post')
+      h2()= 'You now own Get a Grip - Radio Edit by Feral Five'
+      h3()= "Also, we've issued you Supporter Credentials."
+      div(style="display: flex; align-items: center;")
+        img(src='images/passport.png', style='width:20px; margin-right: 10px;')
+        span()= 'Feral Five Supporter Credentials have been issued to "Angus\'s Wallet".'
+      div.input
+          input(type="submit", name="stream", value="Play Track", style="padding:6px 12px; border:1px solid #333; font-size: 1.5em; margin-top: 2em; background-color: black; color: white;")
