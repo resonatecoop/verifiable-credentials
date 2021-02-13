@@ -4,9 +4,21 @@ const port = 4000
 
 app.get('/v1/getAllAttrs/:username', function(request, response) {
   
-  // Returns user data after VC layer has authenticated
-  console.log('Already Authenticated');
+  // VC Layer first authenticates with User API
+  console.log('Authenticated');
   
+  // User API returns requested user attributes to VC Layer 
+  const vc_context = "https://resonate.is/VCcontext/v1";
+  const vc_type = "SupporterCredential";
+  const user = {
+    name: "Angus",
+    surname: "McLeod"
+  }
+  const supporter_data = {
+    "artist": "Feral Five",
+    "from": (new Date()).toISOString()
+  };
+
   response.setHeader('Content-Type', 'application/json');
   response.end(
     JSON.stringify(
@@ -14,25 +26,20 @@ app.get('/v1/getAllAttrs/:username', function(request, response) {
         "@context": [
           "https://www.w3.org/2018/credentials/v1",
           "https://schema.org/",
-          "https://resonate.is/VCcontext/v1"
+          vc_context
         ],
         "type": [
           "VerifiableCredential",
-          "SupporterCredential"
+          vc_type
         ],
-        "name": "Angus",
-        "surname": "McLeod",
-        "supporter": {
-          "name": "angus mcleod",
-          "artist": "Feral Five",
-          "from": "09/02/2021",
-          "level": "gold"
-        }
+        "name": user.name,
+        "surname": user.surname,
+        "supporter": supporter_data
       }]
     )
   );
 });
 
 app.listen(port, () => {
-  console.log(`Mock Resonate User API Running on http://localhost:${port}`);
+  console.log(`Resonate User API Reference Running on http://localhost:${port}`);
 })

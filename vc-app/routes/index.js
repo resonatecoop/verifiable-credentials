@@ -2,31 +2,41 @@ var express = require('express');
 var axios = require('axios')
 var router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index');
 });
 
 router.post('/purchase', function(req, res) {
   
-  console.dir("Purchase completed");
+  /* Transaction is handled by the relevant Resonate application */
+  console.dir("Transaction completed");
   
-  axios.post('http://127.0.0.1:1880/v1/RegisterWithIssuer', {
-    vcIssuer: "http://localhost:4000",
+  const username = "angus";
+  const user_id = "1234";
+  const artist_id = "ar_12345";
+  
+  /* Send request to our issuer */
+  const issuer_base_url = "http://127.0.0.1:1880";
+  const vc_base_url = "http://localhost:4000";
+  
+  axios.post(`${issuer_base_url}/v1/RegisterWithIssuer`, {
+    vcIssuer: vc_base_url,
 	  authnCreds: {
-      "username": "angus",
-      "user_id": "12345",
-      "track_id": "tr_12345",
-      "artist_id": "ar_12345"
+      "username": username,
+      "user_id": user_id,
+      "artist_id": artist_id
     }
   }).then(res => {
-    console.log(`statusCode: ${res.statusCode}`)
-    console.log(res.data)
+    if (res.status == 200) {
+      console.log("Credentials Issued.")
+    } else {
+      console.log("Credentials failed to issue.");
+    }
   }).catch(error => {
-    console.error(error)
+    console.log(`Credentials failed to issue with error: ${error}`);
   });
   
-  res.redirect('/player');
+  res.redirect('/completed');
 });
 
 module.exports = router;
