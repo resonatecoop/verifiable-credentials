@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 router.post('/purchase', function(req, res) {
   
   /* Transaction is handled by the relevant Resonate application */
-  console.dir("Transaction completed");
+  console.log("Transaction completed");
   
   const username = "angus";
   const user_id = "1234";
