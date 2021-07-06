@@ -30,6 +30,7 @@ services:
     ports:
       - "80:80"
       - "443:443"
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - type: bind
         source: ./data/nginx/app.conf
@@ -43,10 +44,14 @@ services:
 
   certbot:
     image: certbot/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     volumes:
-      - "./data/certbot/conf:/etc/letsencrypt"
-      - "./data/certbot/www:/var/www/certbot"
-      - "./data/log/letsencrypt:/var/log/letsencrypt"
+      - type: bind
+        source: ./data/certbot/conf
+        target: /etc/letsencrypt
+      - type: bind
+        source: ./data/certbot/www
+        target: /var/www/certbot
 
 volumes:
   vc-app-db:
