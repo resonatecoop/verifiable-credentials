@@ -33,8 +33,8 @@ services:
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     volumes:
       - type: bind
-        source: ./data/nginx/app.conf
-        target: /etc/nginx/conf.d/app.conf
+        source: ./data/nginx
+        target: /etc/nginx/conf.d
       - type: bind
         source: ./data/certbot/conf
         target: /etc/letsencrypt
