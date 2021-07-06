@@ -2,41 +2,93 @@ var express = require('express');
 var axios = require('axios')
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-  res.render('index');
+function randomFixedInteger(length) {
+  return Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
+}
+
+router.get('/', function(request, response, next) {
+  response.render('index');
 });
 
-router.post('/purchase', function(req, res) {
+router.post('/issue', async function(request, response) {
+  const email = request.body.email;
+
+  // Kallie Marie - Should Your Sun Set Before Mine
+  const kmtids = [21516,21517,21518];
+
+  // All participating tracks
+  const track_ids = kmtids;
+
+  const postConfig = {
+    method: 'post',
+    url: 'https://api.resonate.coop/v2/user/admin/plays',
+    headers: { 
+      'Authorization': `Bearer ${process.env.RESONATE_API_TOKEN}`, 
+      'Accept': 'application/json', 
+      'Content-Type': 'application/json'
+    },
+    data: JSON.stringify({
+      email,
+      "ids": track_ids,
+      "minCount": 9
+    })
+  };
   
-  /* Transaction is handled by the relevant Resonate application */
-  console.log("Transaction completed");
-  
-  const username = "angus";
-  const user_id = "1234";
-  const artist_id = "ar_12345";
-  
-  /* Send request to our issuer */
-  const issuer_base_url = "http://127.0.0.1:1880";
-  const vc_base_url = "http://localhost:4000";
-  
-  axios.post(`${issuer_base_url}/v1/RegisterWithIssuer`, {
-    vcIssuer: vc_base_url,
-	  authnCreds: {
-      "username": username,
-      "user_id": user_id,
-      "artist_id": artist_id
+  let playsData;
+  let playsResponse;
+
+  try {
+    playsResponse = await axios(postConfig);
+  } catch (error) {
+    playsData = error.response.data;
+  }
+
+  if (!playsResponse || !playsResponse.data) {
+    let errorMessage = playsData && playsData.message ? playsData.message : 'Failed to find any plays';
+    return response.send(errorMessage);
+  }
+
+  playsData = playsResponse.data.data;
+
+  return response.send(playsData);
+
+  if (playsData && playsData.length > 0) {
+    let user = await User.findOne({
+      where: {
+        email
+      }
+    });
+
+    if (user && user.issued) {
+      return response.send("already issued");
     }
-  }).then(res => {
-    if (res.status == 200) {
-      console.log("Credentials Issued.")
-    } else {
-      console.log("Credentials failed to issue.");
+
+    if (!user) {
+      user = await User.create({
+        email,
+        username: email.split('@')[0],
+        otp: randomFixedInteger(16),
+        issued: false
+      });
     }
-  }).catch(error => {
-    console.log(`Credentials failed to issue with error: ${error}`);
-  });
+
+    // present QR code
+    const requestParams = {
+      vcIssuer: "issuer.vc.resonate.is",
+      authnCreds: {
+        username: user.username,
+        otp: user.otp
+      }
+    }
+
+    url = `vcwallet://register?request=${base64Encode(requestParams)}`;
+
+    response.end(QRCode(ur));
+  } else {
+    response.send("havent played");
+  }
   
-  res.redirect('/completed');
+  response.redirect('/completed');
 });
 
 module.exports = router;

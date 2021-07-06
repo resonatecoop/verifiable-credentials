@@ -1,29 +1,108 @@
 extends layout
 
 block content
-  header(style="position:fixed;top:0;left:0;width:100vw;height:100px;border-bottom:1px solid #333;display:flex;align-items:center;justify-content:space-between;padding:0 2em;box-sizing:border-box;")
-    img(src='images/resonate.png', alt='Resonate', style='height:99px;')
-    img(src='images/angus.png', alt="Angus", style="border-radius:50%;width:50px;height:50px;")
-  h1(style="padding: 80px 0 20px; border-bottom: 1px solid black;")= 'Buy Get A Grip - Radio Edit by Feral Five'
-  div(style="display: flex;")
-    div(style="border-right: 1px solid black; padding-right: 10px;")
-      img(src='images/feral-five.jpg', alt='Album', style='width:300px; margin-right:50px;')
-    form(style="margin-left: 50px;" name="purchase", action="/purchase", method='post')
-      h2()= 'You are 1 play away from owning this track.'
-      table(style="width: 400px")
-        thead
-          tr
-            td()= 'Total remaining cost'
-            td()= 'Current stream'
-            td()= 'Next stream'
-        tbody
-          tr
-            td(style="font-weight:800")= '0.0060 €0.20'
-            td(style="font-weight:800")= '0.0060'
-            td(style="font-weight:800")= '0.0000'
-      h3()= "On purchase you'll be issued Supporter Credentials for Feral Five."
-      div(style="display: inline-flex; align-items: center; padding: 10px; background-color: #e8e7e7; width: fit-content;")
-        img(src='images/passport.png', style='width:20px; margin-right: 10px;')
-        span()= 'Credentials will be issued to "Angus\'s Wallet".'
-      div.input
-          input(type="submit", name="stream", value="Buy Now", style="padding:6px 12px; border:1px solid #333; font-size: 1.5em; margin-top: 1em; background-color: black; color: white;")
+  div(style="position:fixed;width:100%;height:100%;left:0;top:0;right:0;bottom:0;z-index:-1")
+    ul.list.ma0.pa0.cf(style='box-sizing: border-box;list-style-type: none;padding: var(--spacing-none);margin: var(--spacing-none);')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Zomby' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/9382/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Keep Shelly In Athens' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/657/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='San Hani' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/548/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Guilty Connector' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/633/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='YHUNIIQ' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/16200/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Pswingset' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/1952/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='RP Boo' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/698/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='L Ø V' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/11262/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label="Vex'd" style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/732/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Prophet' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/4305/profile_photo.jpeg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Roly Porter & Cynthia Millar' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/4799/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Raen Arthur' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/11291/profile_photo.png) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Sukitoa o Namau' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/10258/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='dagan' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/1573/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='DeShawn a.k.a. Je' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/12548/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Jenny Caicedo' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/8820/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='dbh' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/2526/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Marko Kush' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/11347/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Carlos Trilha' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/7756/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='ROLSTR' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/313/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Big Chief Buffalo Bass' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/2872/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Mischa Lively' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/1064/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Sandtimer' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/17393/profile_photo.png) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+      li.fl.w-50.w-third-m.w-20-l(style='box-sizing: border-box;float: left;width: 20%;')
+        .db.aspect-ratio.aspect-ratio--1x1(style='box-sizing: border-box;height: 0;position: relative;padding-bottom: 100%;display: block;')
+          span.bg-center.gray-100.hover-grayscale-0.cover.aspect-ratio--object(role='img' aria-label='Color Theory' style='background: url(https://resonate.is/wp-content/uploads/ultimatemember/1233/profile_photo.jpg) no-repeat;position: absolute;top: 0;right: 0;bottom: 0;left: 0;width: 100%;height: 100%;z-index: 100;background-repeat: no-repeat;background-position: center center;filter: grayscale(100%);background-size: cover!important;')
+  div(style="display:flex;justify-content:center;align-items:flex-start;flex-direction:column;z-index:1;background:black;padding:2em;margin:2em auto;width:800px;max-width:90%;color:white;box-sizing: border-box;")
+    img(src='images/logo.svg', alt='Resonate', style="height: 50px;")
+    h1(class="title")= "Community Credentials Beta Program"
+    form(name="issue", action="/issue", method='post', style="box-shadow:0px 0 11px 10px #333;display:inline-block;margin-bottom:1em;")
+      input(type="text", name="email", placeholder="enter your email", style="padding:1em;border:none;font-size:1.5em;")
+      input(type="submit", name="stream", value="Get Access", style="padding:1em;border:none;font-size:1.5em;background-color:black;color:white;cursor:pointer;")
+    div(class="links")
+      a(href="#who", style="color:white")= "Who's participating?"
+      a(href="#what", style="color:white;")= "What is this?"
+      a(href="#how", style="color:white;")= "How does it work?"
+      a(href="#more", style="color:white;")= "Where can I find out more?"
+    div(class="question")
+      h2(id="who")= "Who's participating?"
+      a(href="https://beta.resonate.is/artists/9003", target="_blank", style="display:flex;flex-direction:column;color:white;")
+        img(src='images/kallie-syssbm.jpg', alt='Kallie Marie - Should Your Sun Set Before Mine', style='width:200px; margin-right:50px;')
+        label()= "Kallie Marie - Should Your Sun Set Before Mine"
+    div(class="question")
+      h2(id="what")= "What is this?"
+      p()= "Resonate is trialing a new way of connecting our Artists and Listeners. A Resonate Community Credential is digital proof you're a supporter of an artist. You can use it to get access to private community, where you'll find exclusive content and other supporters like you."
+    div(class="question")
+      h2(id="how")= "How does it work?"
+      p()= "If you have purchased a track from a participating release, enter your email and click 'Get Access'. If you qualify, you'll be issued credentials via email which will give you access to exlcusive content, discussion and much more."
+    div
+      h2()= "Where can I find out more?"
+      p
+        span(style="margin-right:.25em;")= "To find out more head over to the"
+        span(style="margin-right:.25em;")
+          a(href='https://community.resonate.is/c/platform/community-credentials/57', target="_blank")= "#community-credentials"
+        span(style="margin-right:.25em;")= "category on"
+        span
+          a(href="https://community.resonate.is", target="_blank")= "our community."

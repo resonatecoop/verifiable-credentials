@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "pm2": "pm2 start processes.json --no-daemon",
+    "start": "node ./bin/www",
+    "test": "jest",
+    "migrate": "node ./bin/migrate.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -12,6 +15,12 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "pg": "^8.6.0",
+    "pm2": "^5.1.0",
+    "sequelize": "^6.6.4"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
   }
 }
