@@ -14,14 +14,14 @@ const sequelize = new Sequelize(
   }
 );
 
-const User = sequelize.define('User', {
+const User = sequelize.define('user', {
   uuid: {
-    type: DataTypes.UUID,
+    type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true
   },
   email: {
-    type: DataTypes.STRING,
+    type: Sequelize.STRING,
     allowNull: false
   },
   username: {
@@ -29,11 +29,11 @@ const User = sequelize.define('User', {
     allowNull: false
   },
   otp: {
-    type: DataTypes.BIGINT,
+    type: Sequelize.BIGINT,
     allowNull: true
   },
   issued: {
-    type: DataTypes.BOOLEAN,
+    type: Sequelize.BOOLEAN,
     defaultValue: false,
     allowNull: false
   }

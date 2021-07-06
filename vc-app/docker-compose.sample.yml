@@ -1,0 +1,52 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports: 
+      - '5432:5432'
+    volumes:
+      - vc-app-db:/var/lib/postgresql/data
+
+  vc-app:
+    build:
+      context: .
+    entrypoint: ["./entrypoint.sh"]
+    environment:
+      RESONATE_API_TOKEN: ''
+      DB_SCHEMA: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: postgres
+    depends_on:
+      - postgres
+    ports:
+      - '3000:3000'
+
+  nginx:
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - type: bind
+        source: ./data/nginx/app.conf
+        target: /etc/nginx/conf.d/app.conf
+      - type: bind
+        source: ./data/certbot/conf
+        target: /etc/letsencrypt
+      - type: bind
+        source: ./data/certbot/www
+        target: /var/www/certbot
+
+  certbot:
+    image: certbot/certbot
+    volumes:
+      - "./data/certbot/conf:/etc/letsencrypt"
+      - "./data/certbot/www:/var/www/certbot"
+      - "./data/log/letsencrypt:/var/log/letsencrypt"
+
+volumes:
+  vc-app-db:

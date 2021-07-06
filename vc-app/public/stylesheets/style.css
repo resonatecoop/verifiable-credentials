@@ -2,6 +2,8 @@ body {
   padding: 50px;
   margin: 0;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: inline-block;
+  position: relative;
 }
 
 a {
@@ -30,6 +32,138 @@ a {
 
 input[type="text"] {
   width: 400px;
+}
+
+.album-link {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+
+.album-link label {
+  margin-top: .5em;
+  text-decoration: underline;
+}
+
+.participating-releases {
+  margin-top: 2em;
+}
+
+.modal-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0,0,0,0.7);
+  display: none;
+}
+
+.modal {
+  display: none;
+  background-color: white;
+  color: black;
+  padding: 2em;
+  border: 2px solid black;
+  position: fixed;
+  top: 100px;
+  margin: 0 auto;
+  width: 650px;
+  max-width: 95%;
+  position: relative;
+}
+
+.modal .close {
+  position: absolute;
+  top: 2em;
+  right: 2em;
+  cursor: pointer;
+}
+
+.modal .close img {
+  width: 20px;
+  height: 20px;
+}
+
+.modal h2 {
+  padding: 1em;
+  background-color: black;
+  color: white;
+}
+
+.modal label {
+  color: black;
+}
+
+.step-content {
+  padding: 0 1em;
+}
+
+.app-links {
+  display: flex;
+  align-items: center;
+  padding: 1em 0;
+}
+
+.app .stores > div {
+  width: 200px;
+  display: flex;
+  justify-content: flex-end;
+  height: 75px;
+}
+
+.app .stores .android {
+  justify-content: flex-start;
+}
+
+.app a {
+  display: inline-block;
+  overflow: hidden;
+  border-radius: 13px;
+}
+
+.app .ios {
+  height: 100%;
+}
+
+.app .ios a {
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.app .android img {
+  width: 190px;
+}
+
+.app .ios img {
+  width: 160px;
+}
+
+.app .stores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app .vc-ltd-app {
+  padding: 0;
+  border: 2px solid black;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app .vc-ltd-app img {
+  width: 100px;
+}
+
+.reaonte-community a {
+  background-color: black;
+  display: inline-block;
+  padding: 1em;
 }
 
 @media only screen and (max-width: 600px) {

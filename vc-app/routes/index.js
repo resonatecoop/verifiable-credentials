@@ -1,9 +1,18 @@
 var express = require('express');
 var axios = require('axios')
 var router = express.Router();
+var db = require('../database');
+var User = db.User;
+var QRCode = require('qrcode');
 
 function randomFixedInteger(length) {
   return Math.floor(Math.pow(10, length-1) + Math.random() * (Math.pow(10, length) - Math.pow(10, length-1) - 1));
+}
+
+function errorResponse(response, message) {
+  response.contentType('json');
+  response.status(403);
+  return response.send({ message });
 }
 
 router.get('/', function(request, response, next) {
@@ -44,13 +53,11 @@ router.post('/issue', async function(request, response) {
   }
 
   if (!playsResponse || !playsResponse.data) {
-    let errorMessage = playsData && playsData.message ? playsData.message : 'Failed to find any plays';
-    return response.send(errorMessage);
+    let message = playsData && playsData.message ? playsData.message : "You don't yet qualify";
+    return errorResponse(response, message);
   }
 
   playsData = playsResponse.data.data;
-
-  return response.send(playsData);
 
   if (playsData && playsData.length > 0) {
     let user = await User.findOne({
@@ -60,7 +67,7 @@ router.post('/issue', async function(request, response) {
     });
 
     if (user && user.issued) {
-      return response.send("already issued");
+      return errorResponse(response, "You've already been issued with credentials");
     }
 
     if (!user) {
@@ -80,15 +87,15 @@ router.post('/issue', async function(request, response) {
         otp: user.otp
       }
     }
+    const encodedResquest = (Buffer.from(JSON.stringify(requestParams))).toString('base64');
+    const deepLink = `vcwallet://register?request=${encodedResquest}`;
 
-    url = `vcwallet://register?request=${base64Encode(requestParams)}`;
-
-    response.end(QRCode(ur));
+    response.contentType('json');
+    response.status(200);
+    return response.send({ deepLink });
   } else {
-    response.send("havent played");
+    return errorResponse(response, "You don't yet qualify");
   }
-  
-  response.redirect('/completed');
 });
 
 module.exports = router;
