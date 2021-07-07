@@ -79,9 +79,8 @@ router.post('/issue', async function(request, response) {
       });
     }
 
-    // present QR code
     const requestParams = {
-      vcIssuer: "issuer.vc.resonate.is",
+      vcIssuer: "https://issuer.vc.resonate.is",
       authnCreds: {
         username: user.username,
         otp: user.otp
