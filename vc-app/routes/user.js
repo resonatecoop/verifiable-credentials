@@ -4,10 +4,11 @@ var db = require('../database');
 var User = db.User;
 
 router.post('/authenticate', async function(request, response) {
-  const otp = request.body.otp;
-  const username = request.body.username;
-
   console.log(`/authenticate request body: ${JSON.stringify(request.body)}`);
+
+  const authnCreds = request.body.authnCreds;
+  const otp = authnCreds.otp;
+  const username = authnCreds.username;
 
   if (!otp || !username) {
     response.status('401');
