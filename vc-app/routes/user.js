@@ -7,6 +7,8 @@ router.post('/authenticate', async function(request, response) {
   const otp = request.body.otp;
   const username = request.body.username;
 
+  console.log(`/authenticate request: opt: ${otp}; username: ${username}`);
+
   if (!otp || !username) {
     response.status('401');
     return response.send('Authentication Failure');
@@ -34,6 +36,8 @@ router.post('/authenticate', async function(request, response) {
 
 router.get('/getAllAttrs/:uuid', async function(request, response) {
   const uuid = request.params.uuid;
+
+  console.log(`/getAllAttrs request: uuid: ${uuid}`);
 
   if (!uuid) {
     response.status('403');
