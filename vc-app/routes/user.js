@@ -76,7 +76,7 @@ router.get('/getAllAttrs/:uuid', async function(request, response) {
 
     response.status(200);
     response.contentType('json');
-    response.send(JSON.stringify(credentials));
+    response.send(credentials);
   } else {
     response.status('403');
     response.send('No user found');
