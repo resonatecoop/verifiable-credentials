@@ -87,7 +87,8 @@ router.post('/issue', async function(request, response) {
       }
     }
     const encodedResquest = (Buffer.from(JSON.stringify(requestParams))).toString('base64');
-    const deepLink = `vcwallet://register?request=${encodedResquest}`;
+    const encodedUrl = encodeURIComponent("https://community.resonate.is/g/kallie_marie");
+    const deepLink = `vcwallet://register?request=${encodedResquest}&returnUrl=${encodedUrl}`;
 
     response.contentType('json');
     response.status(200);

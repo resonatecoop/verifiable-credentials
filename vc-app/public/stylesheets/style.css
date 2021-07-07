@@ -1,9 +1,60 @@
 body {
   padding: 50px;
   margin: 0;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  display: inline-block;
   position: relative;
+  font-size: 15px;
+  font-family: 'Graphik', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  padding: 0;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index:-1;
+}
+
+.background ul {
+  box-sizing: border-box;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  width: 100%;
+  height: 100%;
+}
+
+.background li {
+  box-sizing: border-box;
+}
+
+.background div {
+  box-sizing: border-box;
+  height: 0;
+  position: relative;
+  padding-bottom: 100%;
+  display: block;
+}
+
+.background span[role=img] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover !important;
 }
 
 a {
@@ -32,6 +83,7 @@ a {
 
 input[type="text"] {
   width: 400px;
+  max-width: 100%;
 }
 
 .album-link {
@@ -49,14 +101,33 @@ input[type="text"] {
   margin-top: 2em;
 }
 
+#trial-form {
+  box-shadow: 0px 0 11px 10px #333;
+  display: flex;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+#trial-form input[type=submit] {
+  flex: 1;
+  padding: 1em;
+  border: none;
+  font-size: 1.5em;
+  background-color: black;
+  color: white;
+  cursor: pointer;"
+}
+
 .modal-container {
-  position: absolute;
+  display: none;
+  position: fixed;
+  overflow-x: scroll;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   background: rgba(0,0,0,0.7);
-  display: none;
 }
 
 .modal {
@@ -66,9 +137,9 @@ input[type="text"] {
   padding: 2em;
   border: 2px solid black;
   position: fixed;
-  top: 100px;
-  margin: 0 auto;
+  margin: 100px auto;
   width: 650px;
+  box-sizing: border-box;
   max-width: 95%;
   position: relative;
 }
@@ -95,8 +166,8 @@ input[type="text"] {
   color: black;
 }
 
-.step-content {
-  padding: 0 1em;
+.step {
+  margin: 3em 0;
 }
 
 .app-links {
@@ -110,6 +181,7 @@ input[type="text"] {
   display: flex;
   justify-content: flex-end;
   height: 75px;
+  max-width: 50%;
 }
 
 .app .stores .android {
@@ -160,13 +232,41 @@ input[type="text"] {
   width: 100px;
 }
 
-.reaonte-community a {
+.qr-links {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+#qr-canvas {
+  border: 2px solid black;
+  min-height: 200px;
+  max-width: 50%;
+}
+
+.resonate-community {
+  width: 300px;
+  max-width: 45%;
+}
+
+.resonate-community a {
   background-color: black;
   display: inline-block;
   padding: 1em;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.resonate-community img {
+  width: 100%;
 }
 
 @media only screen and (max-width: 600px) {
+  body {
+    position: unset;
+  }
+
   .title {
     font-size: 2.5em;
     margin: 1em 0 1.5 0;
@@ -176,6 +276,14 @@ input[type="text"] {
     width: 100%;
     box-sizing: border-box;
     text-align: center;
+  }
+  
+  .background ul {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+  
+  #trial-form {
+    flex-direction: column;
   }
 
   .links {
@@ -187,5 +295,29 @@ input[type="text"] {
   .links a {
     width: 100%;
     margin: .5em 0;
+  }
+  
+  .app-links {
+    flex-direction: column;
+  }
+  
+  .app .stores {
+    flex-direction: column;
+    margin-top: 1em;
+  }
+
+  .app .stores > div {
+    width: unset;
+    max-width: unset;
+    flex-direction: column;
+  }
+  
+  .qr-links {
+    flex-direction: column;
+  }
+  
+  #qr-canvas {
+    margin-bottom: 1em;
+    max-width: 100%;
   }
 }
