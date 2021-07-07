@@ -6,11 +6,13 @@ block content
       div(class="close")
         img(src="images/times.png")
       h1()= "You don't yet qualify for the community credentials beta program."
-      p()= "You need purchase a track from a participating release to qualify. Go listen to one now!"
+      p()= "You need purchase a track from a participating release, then come back here and enter the email you use with your Resonate account."
       div(class="participating-releases")
+        h2()= "Participating Releases"
         a(href="https://beta.resonate.is/tracks/21516", target="_blank", class="album-link")
+          h3()="Kallie Marie"
           img(src='images/kallie-syssbm.jpg', alt='Kallie Marie - Should Your Sun Set Before Mine', style='width:200px; margin-right:50px;')
-          label()= "Kallie Marie - Should Your Sun Set Before Mine"
+          label()= "Should Your Sun Set Before Mine"
     div(class="modal success-modal")
       div(class="close")
         img(src="images/times.png")
@@ -44,34 +46,37 @@ block content
   div(style="display:flex;justify-content:center;align-items:flex-start;flex-direction:column;z-index:1;background:black;padding:2em;margin:2em auto;width:800px;max-width:90%;color:white;box-sizing: border-box;")
     img(src='images/logo.svg', alt='Resonate', style="height: 50px;")
     h1(class="title")= "Community Credentials Beta Program"
+    p()= "Enter the email you use with your Resonate account."
     form(id="trial-form", name="issue")
       input(type="text", name="email", placeholder="enter your email", style="padding:1em;border:none;font-size:1.5em;")
       input(type="submit", name="stream", value="Get Access")
     div(class="links")
-      a(href="#who", style="color:white")= "Who's participating?"
       a(href="#what", style="color:white;")= "What is this?"
       a(href="#how", style="color:white;")= "How does it work?"
+      a(href="#who", style="color:white")= "Who's participating?"
       a(href="#more", style="color:white;")= "Where can I find out more?"
+    div(class="question")
+      h2(id="what")= "What is this?"
+      p()= "Resonate is trialing a new way of connecting our artists and listeners. We're issuing \"Community Credentials\" to proven supporters of participating artists. You can use your credentials to get access to a private community for the artist, where you'll find exclusive content and other supporters like you."
+    div(class="question")
+      h2(id="how")= "How does it work?"
+      p()= "If you have purchased a track from a participating release, enter the email you use with your Resonate account and click \"Get Access\". If you qualify, you'll be issued credentials and shown how you can use them to access the private community for the artist."
     div(class="question")
       h2(id="who")= "Who's participating?"
       a(href="https://beta.resonate.is/tracks/21516", target="_blank" class="album-link")
+        h3()="Kallie Marie"
+        p()="Supporters of Kallie Marie who have purchased a track from her new Album."
         img(src='images/kallie-syssbm.jpg', alt='Kallie Marie - Should Your Sun Set Before Mine', style='width:200px; margin-right:50px;')
-        label()= "Kallie Marie - Should Your Sun Set Before Mine"
-    div(class="question")
-      h2(id="what")= "What is this?"
-      p()= "Resonate is trialing a new way of connecting our Artists and Listeners. A Resonate Community Credential is digital proof you're a supporter of an artist. You can use it to get access to private community, where you'll find exclusive content and other supporters like you."
-    div(class="question")
-      h2(id="how")= "How does it work?"
-      p()= "If you have purchased a track from a participating release, enter your email and click 'Get Access'. If you qualify, you'll be issued credentials via email which will give you access to exlcusive content, discussion and much more."
+        label()= "Should Your Sun Set Before Mine"
     div
       h2()= "Where can I find out more?"
       p
         span(style="margin-right:.25em;")= "To find out more head over to the"
         span(style="margin-right:.25em;")
           a(href='https://community.resonate.is/c/platform/community-credentials/57', target="_blank")= "#community-credentials"
-        span(style="margin-right:.25em;")= "category on"
+        span(style="margin-right:.25em;")= "category on the"
         span
-          a(href="https://community.resonate.is", target="_blank")= "our community."
+          a(href="https://community.resonate.is", target="_blank")= "Resonate Community."
   div.background
     ul
       li

@@ -90,6 +90,16 @@ input[type="text"] {
   display: flex;
   flex-direction: column;
   color: white;
+  max-width: 50%;
+  text-decoration: none;
+}
+
+.album-link h3 {
+  text-decoration: underline;
+}
+
+.album-link P {
+  margin-top: 0;
 }
 
 .album-link label {
@@ -160,6 +170,15 @@ input[type="text"] {
   padding: 1em;
   background-color: black;
   color: white;
+}
+
+.modal h3 {
+  color: black;
+  text-decoration: underline;
+}
+
+.modal p {
+  color: black;
 }
 
 .modal label {
