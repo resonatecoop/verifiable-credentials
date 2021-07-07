@@ -7,7 +7,7 @@ router.post('/authenticate', async function(request, response) {
   const otp = request.body.otp;
   const username = request.body.username;
 
-  console.log(`/authenticate request body: ${request.body}`);
+  console.log(`/authenticate request body: ${JSON.stringify(request.body)}`);
 
   if (!otp || !username) {
     response.status('401');
