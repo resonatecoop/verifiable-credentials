@@ -29,7 +29,7 @@ router.post('/authenticate', async function(request, response) {
     }
     console.log("Sending response to authenticate: ", JSON.stringify(userDetails));
     response.status(200);
-    response.contentType('json');
+    response.setHeader("Content-Type", "application/json");
     response.send(userDetails)
   } else {
     response.status('401');
