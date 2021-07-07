@@ -24,13 +24,12 @@ router.post('/authenticate', async function(request, response) {
 
   if (user) {
     const userDetails = {
-      username: user.username,
-      userHandler: user.uuid
+      "username": user.username,
+      "userHandler": user.uuid
     }
     console.log("Sending response to authenticate: ", JSON.stringify(userDetails));
     response.status(200);
-    response.setHeader("Content-Type", "application/json");
-    response.send(userDetails)
+    response.json(userDetails);
   } else {
     response.status('401');
     response.send('Authentication Failure');
