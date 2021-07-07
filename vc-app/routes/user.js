@@ -28,7 +28,7 @@ router.post('/authenticate', async function(request, response) {
       "userHandler": user.uuid
     }
     console.log("Sending response to authenticate: ", JSON.stringify(userDetails));
-    response.status(200);
+    response.status('200');
     response.json(userDetails);
   } else {
     response.status('401');
