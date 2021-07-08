@@ -27,7 +27,7 @@ router.post('/authenticate', async function(request, response) {
       "username": user.username,
       "userHandle": user.uuid
     }
-    console.log("Sending response to authenticate: ", JSON.stringify(userDetails));
+
     response.status('200');
     response.json(userDetails);
   } else {
@@ -74,9 +74,8 @@ router.get('/getAllAttrs/:uuid', async function(request, response) {
       }
     ];
 
-    response.status(200);
-    response.contentType('json');
-    response.send(credentials);
+    response.status('200');
+    response.json(credentials);
   } else {
     response.status('403');
     response.send('No user found');
