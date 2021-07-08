@@ -20,7 +20,7 @@ block content
       p()= "Please follow these steps to participate. If you close this page by mistake, just come back to this page and re-enter your email again."
       div(class="steps")
         div(class="step app")
-          h2()= '1. Download the "VC Wallet" App on your phone'
+          h2()= '1. Download the "VC Wallet" App'
           div(class="step-content")
             p()= "Make sure the app you download is made by \"Verifiable Credentials Ltd\" and that it looks like the logo on the left. If you're reading this on your phone, tap the App Store or Google Play logos to go to the app."
             div(class="app-links")
@@ -34,14 +34,19 @@ block content
                   a(href="https://play.google.com/store/apps/details?id=org.verifiablecredentials.vcholder&hl=en&gl=US&pcampaignid=pcampaignidMKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1")
                     img(alt='Get it on Google Play', src='/images/google-play-badge.png')
         div(class="step qr-code")
-          h2()= '2. Open the "VC Wallet" App and "Scan QR Code"'
+          h2()= '2. Get your credentials'
           div(class="step-content")
-            p()= "When you scan this QR code, you'll be issued with a credential that proves you're a supporter of Kallie Marie. You'll then be automatically taken to Kallie Marie's private group on the Resonate Community where you can present your credentials to get access."
+            p()= "When you scan this QR code, you'll be issued with a credential that proves you're a supporter of Kallie Marie. You can use it to get access to her private group on Resonate's Community"
             div(class="qr-links")
               canvas(id="qr-canvas")
-              div(class="resonate-community")
-                a(href="https://commmunity.resonate.is/g/kallie_marie")
-                  img(src="/images/community_logo.png")
+        
+        div(class="step community")
+          h2()= '3. Get access to the community'
+          div(class="step-content")
+            p()= "When you've got your credentials, click the link below to go Kallie Marie's private group on the Resonate Community, where you can present your credentials to get access."
+            div(class="resonate-community")
+              a(href="https://community.resonate.is/g/kallie_marie")
+                img(src="/images/community_logo.png")
 
   div(style="display:flex;justify-content:center;align-items:flex-start;flex-direction:column;z-index:1;background:black;padding:2em;margin:2em auto;width:800px;max-width:90%;color:white;box-sizing: border-box;")
     img(src='images/logo.svg', alt='Resonate', style="height: 50px;")
