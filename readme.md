@@ -1,3 +1,7 @@
+> 🛠 **Status: Maintenance Mode | Stable**
+>
+> This project is currently in [maintenance mode](https://en.wikipedia.org/wiki/Maintenance_mode) - users should feel free to continue to use this app and expect bug fixes, but not expect many additional features.
+
 ## Resonate Verifiable Credentials
 
 This is Resonate's reference implementation of the [Verifiable Credentials Data Model](https://www.w3.org/TR/vc-data-model/) ("VC"). It is intended to explain the theory of our implementation (our "VC Architecture") and provide a working example.
